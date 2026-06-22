@@ -115,9 +115,11 @@ function createFullAnvilRoute(formula: InstructionInterface[], combination: Reco
         if (instruction.position == '!' || instruction.position == '*') {
             let currentScore = 0;
             let idx = 0;
-            while (currentScore < ACTIONS[instruction.instruction]) {
-                currentScore += ACTIONS[route[idx]];
-                idx++;
+            if (ACTIONS[instruction.instruction] < 0) {
+                while (currentScore < ACTIONS[instruction.instruction]*-1) {
+                    currentScore += ACTIONS[route[idx]];
+                    idx++;
+                }
             }
             console.log(idx)
             route.splice(idx, 0, instruction.instruction)
