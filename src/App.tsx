@@ -4,7 +4,7 @@ import InstructionSelector from './components/InstructionSelector'
 import type InstructionInterface from './interfaces/InstructionInterface'
 import { calculate } from './scripts/calculate';
 
-function initializeFormulaObject(length) {
+function initializeFormulaObject(length:number) {
   let outputArray = [];
   for (let i=0; i<length; i++) {
     outputArray.push({
@@ -15,7 +15,7 @@ function initializeFormulaObject(length) {
   return outputArray;
 }
 
-function anvilRouteToString(anvilRoute) {
+function anvilRouteToString(anvilRoute:string[]) {
   let routeString = ""
   anvilRoute.forEach((instruction, idx) => {
     routeString += instruction
@@ -38,7 +38,7 @@ function App() {
 
   const selectors = populateSelectors(formula_length, formula, setInstructions);
 
-  function populateSelectors(length, instructions, setInstructions) {
+  function populateSelectors(length:number, instructions:InstructionInterface[], setInstructions:React.Dispatch<React.SetStateAction<InstructionInterface[]>>) {
     let outputArray = [];
 
     for (let i=0; i<length; i++) {
@@ -55,7 +55,7 @@ function App() {
     return outputArray;
   }
 
-  async function handleCalculate(e: React.MouseEvent<HTMLButtonElement>) {
+  async function handleCalculate() {
     let hasError = false;
     let errorMessage = '';
 

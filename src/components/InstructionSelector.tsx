@@ -13,8 +13,8 @@ export default function InstructionSelector({index, instructions, positionalOpti
     const [positionalOptions, setPositionalOptions] = useState<React.JSX.Element[]>([])
     const disabledOptions = useMemo(
         () => {
-            let disabledFlags = {}
-            instructions.forEach((instruction, idx) => {
+            let disabledFlags:Record<string, boolean> = {}
+            instructions.forEach((instruction) => {
                 if (/^\d+$/.test(instruction.position)) {
                     if (positionalOptionChoices.includes(positionalOptionChoices[Number(instruction.position)])) {
                         disabledFlags[positionalOptionChoices[Number(instruction.position)]] = true
@@ -27,7 +27,7 @@ export default function InstructionSelector({index, instructions, positionalOpti
         }, [instructions]
     )
 
-    function populatePositionalOptions(options, optionsUsed) {
+    function populatePositionalOptions(options:string[], optionsUsed:Record<string,boolean>) {
         let newOptions = []
         options.forEach((option, idx) => {
             newOptions.push(
