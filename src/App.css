@@ -1,0 +1,70 @@
+.calculator--container {
+  text-align: left;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 600px;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+}
+
+.calculator--formula--titles {
+  display: flex;
+}
+
+.calculator--formula--titles h3 {
+  width: 50%;
+}
+
+.calculator--score input {
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.calculator--footer {
+  margin-top: 0.83rem;
+  width: 100%;
+  text-align: center;
+}
+
+.calculator--footer button {
+  border-radius: 5px;
+  padding: 20px 40px;
+}
+
+.output {
+  font-size: 19px;
+  border-radius: 10px;
+  margin-top: 0.83rem;
+  height: 150px;
+  resize: vertical;
+  text-align: center;
+  padding: 7px;
+  width: 100%;
+}
+
+.calculated {
+  color: #f3f4f6;
+  text-shadow: 0 0 6px rgba(243, 244, 246, 0.35);
+}
+
+.placeholder {
+  color: #6b7280;
+}
+
+.error {
+  text-align: left;
+  color: #ef4444;
+}
+
+.separator {
+  border-top: 1px solid #6b7280;
+  opacity: 0.1;
+  margin: 0.83em auto;
+  width: 90%;
+}
