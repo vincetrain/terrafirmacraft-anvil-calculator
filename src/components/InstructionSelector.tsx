@@ -28,7 +28,7 @@ export default function InstructionSelector({index, instructions, positionalOpti
     )
 
     function populatePositionalOptions(options:string[], optionsUsed:Record<string,boolean>) {
-        let newOptions = []
+        let newOptions:React.JSX.Element[] = []
         options.forEach((option, idx) => {
             newOptions.push(
                 <option value={`${idx}`} key={idx} disabled={optionsUsed[option]}>{option}</option>
