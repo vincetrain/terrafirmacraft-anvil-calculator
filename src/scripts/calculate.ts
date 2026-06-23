@@ -98,8 +98,6 @@ function createFullAnvilRoute(formula: InstructionInterface[], combination: Reco
             route.push(key)
         }
     }
-    console.log(route)
-    console.log(formula)
 
     formula.forEach((instruction) => {
         if (instruction.instruction == 'None') {
@@ -112,9 +110,6 @@ function createFullAnvilRoute(formula: InstructionInterface[], combination: Reco
             routeLasts.push(instruction.instruction)
         }
     })
-
-    console.log(route)
-    console.log(routeLasts)
 
     return [...route,...routeLasts];
 }
