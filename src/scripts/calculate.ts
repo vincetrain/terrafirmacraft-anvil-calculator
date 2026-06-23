@@ -91,8 +91,8 @@ function findClosestCombination(score: number, currentScore: number = 0, actions
 }
 
 function createFullAnvilRoute(formula: InstructionInterface[], combination: Record<string, number>) {
-    let route:(string|undefined)[] = []
-    let routeLasts:(string|undefined)[] = []
+    let route:string[] = []
+    let routeLasts:string[] = []
     for (const [key, value] of Object.entries(combination)) {
         for (let i = 0; i < value; i++) {
             route.push(key)
@@ -101,7 +101,10 @@ function createFullAnvilRoute(formula: InstructionInterface[], combination: Reco
 
     formula.forEach((instruction) => {
         if (instruction.instruction == 'None') {
-            routeLasts.push(route.pop())
+            const popped = route.pop();
+            if (popped != undefined) {
+                routeLasts.push()
+            }
         } else {
             routeLasts.push(instruction.instruction)
         }

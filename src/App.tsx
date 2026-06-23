@@ -32,7 +32,7 @@ function App() {
 
   const [formula, setInstructions] = useState<InstructionInterface[]>(initializeFormulaObject(formula_length));
   const [anvilScore, setAnvilScore] = useState<number>(0);
-  const [anvilRoute, setAnvilRoute] = useState<{}[]>([]);
+  const [anvilRoute, setAnvilRoute] = useState<(string|undefined)[]>([]);
   const [outputString, setOutputString] = useState<string>('No output yet... Calculate something!');
   const [outputError, setOutputError] = useState<boolean>();
 
@@ -55,7 +55,7 @@ function App() {
     return outputArray;
   }
 
-  async function handleCalculate() {
+  function handleCalculate() {
     let hasError = false;
     let errorMessage = '';
 
@@ -80,7 +80,7 @@ function App() {
 
     setOutputError(false);
 
-    const result = await calculate(anvilScore, formula);
+    const result = calculate(anvilScore, formula);
     setAnvilRoute(result);
     setOutputString(anvilRouteToString(result));
   }
