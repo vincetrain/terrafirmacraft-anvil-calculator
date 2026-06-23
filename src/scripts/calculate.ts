@@ -98,17 +98,23 @@ function createFullAnvilRoute(formula: InstructionInterface[], combination: Reco
             route.push(key)
         }
     }
+    console.log(route)
+    console.log(formula)
 
     formula.forEach((instruction) => {
         if (instruction.instruction == 'None') {
             const popped = route.pop();
+            console.log(popped)
             if (popped != undefined) {
-                routeLasts.push()
+                routeLasts.push(popped)
             }
         } else {
             routeLasts.push(instruction.instruction)
         }
     })
+
+    console.log(route)
+    console.log(routeLasts)
 
     return [...route,...routeLasts];
 }
