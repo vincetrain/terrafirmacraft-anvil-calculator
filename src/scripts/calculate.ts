@@ -30,7 +30,7 @@ function sortFormula(formula: InstructionInterface[]) {
             }
         }
     })
-    return formulaSorted;
+    return formulaSorted.reverse();
 }
 
 function applyFormula(score: number, formula: InstructionInterface[]): number {
@@ -92,40 +92,22 @@ function findClosestCombination(score: number, currentScore: number = 0, actions
 
 function createFullAnvilRoute(formula: InstructionInterface[], combination: Record<string, number>) {
     let route = []
+    let routeLasts = []
     for (const [key, value] of Object.entries(combination)) {
         for (let i = 0; i < value; i++) {
             route.push(key)
         }
     }
 
-    let formulaLength = 0;
     formula.forEach((instruction) => {
-        if (instruction.instruction != 'None' && instruction.position != 'None') {
-            formulaLength++;
+        if (instruction.instruction == 'None') {
+            routeLasts.push(route.pop())
+        } else {
+            routeLasts.push(instruction.instruction)
         }
     })
 
-    formula.forEach((instruction) => {
-        if (instruction.instruction !== 'None' && /^\d+$/.test(instruction.position)) {
-            route.splice(route.length - Number(instruction.position),0,instruction.instruction);
-        }
-    });
-
-    formula.forEach((instruction) => {
-        if (instruction.position == '!' || instruction.position == '*') {
-            let currentScore = 0;
-            let idx = 0;
-            if (ACTIONS[instruction.instruction] < 0) {
-                while (currentScore < ACTIONS[instruction.instruction]*-1) {
-                    currentScore += ACTIONS[route[idx]];
-                    idx++;
-                }
-            }
-            console.log(idx)
-            route.splice(idx, 0, instruction.instruction)
-        }
-    });
-    return route;
+    return [...route,...routeLasts];
 }
 
 export function calculate(score: number, formula: InstructionInterface[]) {

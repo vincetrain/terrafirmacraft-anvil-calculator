@@ -79,7 +79,7 @@ export default function InstructionSelector({index, instructions, positionalOpti
                 <option value={'None'}>No Position</option>
                 {positionalOptions}
                 <option value={'*'}>Any</option>
-                <option value={'!'}>Not Last</option>
+                <option disabled={disabledOptions['Second Last'] && disabledOptions['Third Last']} value={'!'}>Not Last</option>
             </select>
         </div>
     )
